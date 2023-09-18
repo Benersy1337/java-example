@@ -1,62 +1,39 @@
 package main;
 
-import hookMethod.*;
-import java.util.Scanner;
-import java.util.Random;
-
+import banco.*;
 
 public class Main{
 
     public static void main(String[] args) {
-
     
-        System.out.println("=============================================================================================================");
+       // Exemplo de organização em pacotes
+       ContaCorrente conta1 = new ContaCorrente("João", 1000.0);
+       ContaPoupanca conta2 = new ContaPoupanca("Maria");
 
-        Scanner scanner = new Scanner(System.in);
+       // Depósitos
+       conta1.depositar(500.0);
+       conta2.depositar(1000.0);
 
-        int menu;
+       // Saques
+       conta1.sacar(300.0);
+       conta2.sacar(200.0);
 
-        while (true) {
-            System.out.println("Escolha uma opçao:");
-            System.out.println("1 -> Imposto NF de Venda");
-            System.out.println("2 -> Imposto NF de Transferência");
-            System.out.println("3 -> Sair");
+       // Polimorfismo
+       Conta conta3 = new ContaCorrente("Pedro", 2000.0);
+       conta3.depositar(300);
+       conta3.sacar(2400);
 
-            System.out.print("Digite sua escolha: ");
-            menu = scanner.nextInt();
-
-            Random random = new Random();
-
-            int[] numAleatorio = new int[2];
-
-            for (int i = 0; i < 2; i++) {
-                numAleatorio[i] = random.nextInt(1000);
-            }
-
-
-            if (menu == 1) {
-
-                NotaFiscal tranorte = new NotaFiscalVenda(numAleatorio[0], 500);
-                System.out.println("O imposto sob a NF " + tranorte.getNumNotaFiscal() + " de Venda é " + tranorte.impostoTotal());
-
-            } else if (menu == 2) {
-
-                NotaFiscal agroforte = new NotaFiscalTransferencia(numAleatorio[1], 500);
-                System.out.println("O imposto sob a NF " + agroforte.getNumNotaFiscal() + " de Transferência é " + agroforte.impostoTotal());
-
-            } else if (menu == 3) {
-            
-                break; 
-
-            } else {
-                System.out.println("Opção inválida. Tente novamente.");
-            }
-        }
-    
-
-        scanner.close();
-
-        System.out.println("=============================================================================================================");
+       // Classes abstratas e interfaces
+       ContaPoupanca conta4 = new ContaPoupanca("Ana");
+       conta4.depositar(1000);
+       double rendimento = conta4.calcularRendimento();
+      
+       // Exibição de saldos
+       System.out.println("Saldo da Conta 1: " + conta1.getSaldo());
+       System.out.println("Saldo da Conta 2: " + conta2.getSaldo());
+       System.out.println("Saldo da Conta 3: " + conta3.getSaldo());
+       System.out.println("Saldo da Conta 4: " + conta4.getSaldo());
+       System.out.println("Rendimento da Conta 4: " + rendimento);
 
 
     }
