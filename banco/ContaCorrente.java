@@ -1,7 +1,6 @@
 package banco;
 
 
-// Classe de Conta Corrente que herda de Conta
 public class ContaCorrente extends Conta {
     
     private double limite;

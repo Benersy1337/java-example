@@ -1,6 +1,5 @@
 package banco;
 
-// Classe base para contas bancárias
 public abstract class Conta {
     
     protected String titular;
